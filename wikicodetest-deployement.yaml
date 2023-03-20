@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wikicodetest-deployment
+  labels:
+    app: wikicodetest
+spec:
+  replicas: 15
+  selector:
+    matchLabels:
+      app: wikicodetest
+  template:
+    metadata:
+      labels:
+        app: wikicodetest
+    spec:
+      containers:
+        - name: site
+          image: lscr.io/linuxserver/wikijs:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+
